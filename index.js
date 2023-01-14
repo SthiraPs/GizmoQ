@@ -17,14 +17,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-
+app.get('/home', async (req, res) => {
     res.status(200).send({
         message : 'Success',
     });
-})
+});
 
-app.post('/', async (req, res) => {
+app.post('/question', async (req, res) => {
     try{
         console.log(req)
         const prompt = req.body.prompt;
@@ -49,8 +48,6 @@ app.post('/', async (req, res) => {
         res.status(500).send({msg})
     }
 })
-
-
 
 app.listen(port, () => {
     console.log('Server is running...');
